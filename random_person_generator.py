@@ -74,3 +74,15 @@ class RandomPerson():
                 'age': age, 
                 'job': job, 
                 'phone': phone}
+
+if __name__ == '__main__':
+    person = RandomPerson()
+    print(person.male_first_name())
+    print(person.female_first_name())
+    print(person.surname())
+    print(person.generate_random_name())
+    print(person.random_age())
+    print(person.random_email_service())
+    print(person.random_phone_number())
+    print(person.create_occupation())
+    print(person.create_person())
