@@ -44,22 +44,21 @@ class Test_Random_Person_Generator(unittest.TestCase):
         
 
     def test_create_occupation(self):
-        self.p = RandomPerson().create_person()
-        age = self.p["age"]
-        occupation = self.p["job"]
-        if age < 4:
-            self.assertEqual(occupation, "NA")
-        elif age < 18:
-            self.assertEqual(occupation, "Student")
-        else:
-            self.assertIn(occupation, ["cook", "actor", "programmer", "doctor", "dentist", "uber driver", "photographer", "astronaut"])
+        self.p = RandomPerson()
+        self.assertIn(self.p.create_occupation(), ["cook", "actor", "programmer", "doctor", "dentist", "uber driver", "photographer", "astronaut"])
 
     def test_create_person(self):
         self.p = RandomPerson()
         person = self.p.create_person()
         self.assertEqual(len(person), 7)
         self.assertEqual(list(person.keys()), ['first_name', 'last_name', 'email', 'sex', 'age', 'job', 'phone'])
-        
+        if person["age"] < 4:
+            self.assertEqual(person["job"], "NA")
+        elif person["age"] < 18:
+            self.assertEqual(person["job"], "student")
+        else:
+            self.assertIn(person["job"], ["cook", "actor", "programmer", "doctor", "dentist", "uber driver", "photographer", "astronaut"])
+
 
 
 if __name__ == '__main__':
